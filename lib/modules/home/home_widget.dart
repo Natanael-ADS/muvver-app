@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:muvver_app/modules/core/constant/image_const.dart';
+import 'package:muvver_app/modules/core/constant/words_const.dart';
+import 'package:muvver_app/modules/core/custom/custom_button.dart';
+import 'package:muvver_app/modules/core/styles/color_theme.dart';
+import 'package:muvver_app/modules/home/home_text.dart';
 
 class HomeWidget extends StatefulWidget {
   const HomeWidget({Key? key}) : super(key: key);
@@ -18,8 +23,8 @@ class _HomeWidgetState extends State<HomeWidget> {
           _message(),
           const SizedBox(height: 20),
           _submessage(),
-          _button(),
-          _button(),
+          _button1(),
+          _button2(),
         ],
       ),
       bottomNavigationBar: _bottomBar(),
@@ -27,8 +32,7 @@ class _HomeWidgetState extends State<HomeWidget> {
   }
 
   Widget _appBar() {
-    return Container(
-      color: Colors.transparent,
+    return SizedBox(
       height: 80,
       width: double.infinity,
       child: Padding(
@@ -45,12 +49,9 @@ class _HomeWidgetState extends State<HomeWidget> {
   }
 
   Widget _logo() {
-    return Container(
-      color: Colors.transparent,
+    return SizedBox(
       height: 15,
-      child: Image.asset(
-        "lib/images/logo/logo_2.png",
-      ),
+      child: Image.asset(ImageConst.LOGO_1),
     );
   }
 
@@ -60,7 +61,7 @@ class _HomeWidgetState extends State<HomeWidget> {
         borderRadius: BorderRadius.all(Radius.circular(5)),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey,
+            color: ColorTheme.PRIMARY,
             blurRadius: 30,
             spreadRadius: -10,
             offset: Offset(-2, 5),
@@ -68,10 +69,7 @@ class _HomeWidgetState extends State<HomeWidget> {
         ],
       ),
       child: ClipRRect(
-        child: Image.asset(
-          "lib/images/home/profile.png",
-          height: 35,
-        ),
+        child: Image.asset(ImageConst.PROFILE, height: 35),
         borderRadius: const BorderRadius.all(Radius.circular(5)),
       ),
     );
@@ -81,15 +79,14 @@ class _HomeWidgetState extends State<HomeWidget> {
     return SizedBox(
       child: RichText(
         text: const TextSpan(
-          text: "Facilitando seus ",
+          text: HomeText.MESSAGE_1,
           style: TextStyle(
-            color: Colors.black,
-            fontFamily: "Titillium Web",
+            color: ColorText.PRIMARY,
             fontSize: 20,
           ),
           children: [
             TextSpan(
-              text: "envios.",
+              text: HomeText.MESSAGE_2,
               style: TextStyle(fontWeight: FontWeight.bold),
             )
           ],
@@ -101,97 +98,63 @@ class _HomeWidgetState extends State<HomeWidget> {
   Widget _submessage() {
     return const SizedBox(
       child: Text(
-        "Entregue ou envie.",
+        HomeText.SUBMESSAGE,
         style: TextStyle(
-          color: Colors.grey,
-          fontFamily: "Titillium Web",
+          color: ColorText.SECOND,
           fontSize: 16,
         ),
       ),
     );
   }
 
-  Widget _button() {
-    return Padding(
-      padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
-      child: ElevatedButton(
-        onPressed: () {},
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(Colors.black87),
-        ),
-        child: SizedBox(
-          height: 120,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [_messageButton(), _image()],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _messageButton() {
-    return Column(
-      children: const [
-        SizedBox(height: 10),
-        Center(
-          child: Text(
-            "Viajante",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-            ),
-          ),
-        ),
-        SizedBox(height: 10),
-        Text(
-          "Vai viajar pra onde?",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 14,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _image() {
-    return Image.asset("lib/images/home/box_1.png");
-  }
-
   Widget _bottomBar() {
     return BottomNavigationBar(
       showSelectedLabels: true,
       showUnselectedLabels: true,
-      unselectedItemColor: Colors.grey,
-      fixedColor: Colors.grey,
+      unselectedItemColor: ColorTheme.PRIMARY,
+      fixedColor: ColorTheme.PRIMARY,
       selectedFontSize: 10,
       unselectedFontSize: 10,
       items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
-          label: "Início",
+          label: WordsConst.HOME,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.notifications),
-          label: "Notificações",
+          label: WordsConst.NOTIFICATIONS,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.chat_bubble),
-          label: "Chat",
+          label: WordsConst.CHAT,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.layers),
-          label: "Pedidos",
+          label: WordsConst.ORDERS,
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.local_shipping),
-          label: "Entregas",
+          label: WordsConst.DELIVERIES,
         )
       ],
+    );
+  }
+
+  Widget _button1() {
+    return CustomButton(
+      onPressed: () {},
+      title: HomeText.BUTTON_TITLE_1,
+      message: HomeText.BUTTON_TEXT_1,
+      pathImage: ImageConst.BOX_1,
+    );
+  }
+
+  Widget _button2() {
+    return CustomButton(
+      onPressed: () {},
+      title: HomeText.BUTTON_TITLE_2,
+      message: HomeText.BUTTON_TEXT_2,
+      pathImage: ImageConst.TRUCK_1,
     );
   }
 }
