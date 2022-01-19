@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
@@ -6,10 +7,11 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Muvver',
-        theme: ThemeData(
-          primarySwatch: Colors.grey,
-        ),
-        home: Container());
+      debugShowCheckedModeBanner: false,
+      title: 'Muvver',
+      theme: ThemeData(
+        primarySwatch: Colors.grey,
+      ),
+    ).modular();
   }
 }

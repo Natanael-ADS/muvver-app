@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:muvver_app/modules/home/home_widget.dart';
 
 class AppModule extends Module {
   @override
@@ -8,6 +9,6 @@ class AppModule extends Module {
 
   @override
   List<ModularRoute> get routes {
-    return [];
+    return [ChildRoute("/", child: (c, a) => const HomeWidget())];
   }
 }
