@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:muvver_app/modules/core/constant/image_const.dart';
 import 'package:muvver_app/modules/core/styles/color_theme.dart';
 
 class CustomButton extends StatelessWidget {
@@ -31,7 +32,8 @@ class CustomButton extends StatelessWidget {
         child: SizedBox(
           height: 129,
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding:
+                const EdgeInsets.only(left: 8, right: 20, top: 8, bottom: 8),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [_messageButton(), _image()],
@@ -73,9 +75,20 @@ class CustomButton extends StatelessWidget {
   }
 
   Widget _image() {
+    double? height, width = 0;
+
+    if (pathImage == ImageConst.BOX_2) {
+      height = 43;
+      width = 40;
+    }
+    if (pathImage == ImageConst.TRUCK_2) {
+      height = 30;
+      width = 56;
+    }
     return Image.asset(
       pathImage,
-      height: 43,
+      height: height,
+      width: width,
     );
   }
 }

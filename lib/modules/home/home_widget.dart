@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:muvver_app/modules/core/constant/image_const.dart';
 import 'package:muvver_app/modules/core/constant/words_const.dart';
 import 'package:muvver_app/modules/core/custom/custom_button.dart';
@@ -16,9 +17,19 @@ class _HomeWidgetState extends State<HomeWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        systemOverlayStyle: const SystemUiOverlayStyle(
+          statusBarIconBrightness: Brightness.dark,
+          statusBarColor: ColorTheme.THIRD,
+        ),
+        backgroundColor: ColorTheme.THIRD,
+        actions: [_profile()],
+        leading: _logo(),
+        elevation: 0,
+        leadingWidth: 100,
+      ),
       body: Column(
         children: [
-          _appBar(),
           const SizedBox(height: 40),
           _message(),
           const SizedBox(height: 20),
@@ -31,46 +42,34 @@ class _HomeWidgetState extends State<HomeWidget> {
     );
   }
 
-  Widget _appBar() {
-    return SizedBox(
-      height: 80,
-      width: double.infinity,
-      child: Padding(
-        padding: const EdgeInsets.only(top: 20, left: 15, right: 15),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            _logo(),
-            _profile(),
-          ],
-        ),
-      ),
-    );
-  }
-
   Widget _logo() {
     return SizedBox(
-      height: 15,
-      child: Image.asset(ImageConst.LOGO_1),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 15),
+        child: Image.asset(ImageConst.LOGO_2, height: 35, width: 80),
+      ),
     );
   }
 
   Widget _profile() {
     return Container(
       decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(5)),
+        borderRadius: BorderRadius.all(Radius.circular(50)),
         boxShadow: [
           BoxShadow(
             color: ColorTheme.PRIMARY,
             blurRadius: 30,
-            spreadRadius: -10,
+            spreadRadius: -19,
             offset: Offset(-2, 5),
           )
         ],
       ),
-      child: ClipRRect(
-        child: Image.asset(ImageConst.PROFILE, height: 35),
-        borderRadius: const BorderRadius.all(Radius.circular(5)),
+      child: Padding(
+        padding: const EdgeInsets.only(right: 15),
+        child: ClipRRect(
+          child: Image.asset(ImageConst.PROFILE, height: 32, width: 32),
+          borderRadius: const BorderRadius.all(Radius.circular(100)),
+        ),
       ),
     );
   }
@@ -145,7 +144,7 @@ class _HomeWidgetState extends State<HomeWidget> {
       onPressed: () {},
       title: HomeText.BUTTON_TITLE_1,
       message: HomeText.BUTTON_TEXT_1,
-      pathImage: ImageConst.BOX_1,
+      pathImage: ImageConst.BOX_2,
     );
   }
 
@@ -154,7 +153,7 @@ class _HomeWidgetState extends State<HomeWidget> {
       onPressed: () {},
       title: HomeText.BUTTON_TITLE_2,
       message: HomeText.BUTTON_TEXT_2,
-      pathImage: ImageConst.TRUCK_1,
+      pathImage: ImageConst.TRUCK_2,
     );
   }
 }

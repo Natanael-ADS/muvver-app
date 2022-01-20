@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 class ColorTheme {
   static const PRIMARY = Colors.grey;
   static const SECOND = Colors.black87;
-  static const THIRD = Colors.white;
+  static const THIRD = Colors.white10;
 }
 
 class ColorText {
   static const PRIMARY = Colors.black;
   static const SECOND = Colors.grey;
-  static const THIRD = Colors.white;
+  static const THIRD = Colors.white10;
 }
