@@ -10,9 +10,7 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Muvver',
-      theme: ThemeData(
-        primarySwatch: ColorTheme.PRIMARY,
-      ),
+      theme: ThemeData(primarySwatch: ColorTheme.PRIMARY),
     ).modular();
   }
 }
