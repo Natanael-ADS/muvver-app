@@ -1,7 +1,7 @@
 class Traveler {
   int id;
   int idUser;
-  int idTransports;
+  int idTransport;
 
-  Traveler({this.id = 0, required this.idUser, required this.idTransports});
+  Traveler({this.id = 0, required this.idUser, required this.idTransport});
 }

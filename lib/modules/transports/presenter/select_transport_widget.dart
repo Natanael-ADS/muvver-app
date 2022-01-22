@@ -90,7 +90,10 @@ class _SelectTransportWidgetState extends State<SelectTransportWidget> {
                   }),
             ),
           ),
-          CustomButton(title: SelectTransportText.BUTTON, onPressed: () {}),
+          CustomButton(
+            title: SelectTransportText.BUTTON,
+            onPressed: store.addTraveler,
+          ),
         ],
       ),
     );

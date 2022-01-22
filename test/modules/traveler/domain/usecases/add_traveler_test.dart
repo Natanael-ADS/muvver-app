@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -16,10 +14,10 @@ void main() {
   testWidgets('error - add traveler ...', (tester) async {
     when(repository.add(any)).thenThrow(Exception());
 
-    usecase(Traveler(idUser: 1, idTransports: 1));
+    usecase(Traveler(idUser: 1, idTransport: 1));
   });
 
   testWidgets('success - add traveler ...', (tester) async {
-    usecase(Traveler(idUser: 1, idTransports: 1));
+    usecase(Traveler(idUser: 1, idTransport: 1));
   });
 }

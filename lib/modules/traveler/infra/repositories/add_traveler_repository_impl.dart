@@ -12,7 +12,7 @@ class AddTravelerRepositoryImpl implements AddTravelerRepository {
   @override
   void add(Traveler traveler) {
     try {
-      final model = traveler as TravelerModel;
+      final model = TravelerModel.fromUnity(traveler);
       datasource.add(model);
     } catch (exception, stackTrace) {
       LogError(exception, stackTrace);

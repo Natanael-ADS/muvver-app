@@ -14,10 +14,10 @@ void main() {
   testWidgets('error - add traveler repository impl ...', (tester) async {
     when(datasource.add(any)).thenThrow(Exception());
 
-    repository.add(Traveler(idUser: 1, idTransports: 1));
+    repository.add(Traveler(idUser: 1, idTransport: 1));
   });
 
   testWidgets('Success - add traveler repository impl ...', (tester) async {
-    repository.add(Traveler(idUser: 1, idTransports: 1));
+    repository.add(Traveler(idUser: 1, idTransport: 1));
   });
 }
