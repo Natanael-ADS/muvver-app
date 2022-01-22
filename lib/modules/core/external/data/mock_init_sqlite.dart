@@ -1,8 +1,8 @@
 import 'package:muvver_app/modules/core/constant/image_const.dart';
 import 'package:muvver_app/modules/transports/infra/models/transport_model.dart';
 
-class MockDatabaseTransport {
-  final models = [
+class MockInitSQLite {
+  final transportModels = [
     TransportModel(id: 1, name: "Carro", pathImage: ImageConst.IC_CAR_2),
     TransportModel(id: 2, name: "Avião", pathImage: ImageConst.IC_AIRPLANE_2),
     TransportModel(id: 3, name: "Caminhão", pathImage: ImageConst.IC_TRUCK_2),
