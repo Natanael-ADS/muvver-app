@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:muvver_app/modules/core/constant/image_const.dart';
+import 'package:muvver_app/modules/core/constant/route_const.dart';
 import 'package:muvver_app/modules/core/constant/words_const.dart';
-import 'package:muvver_app/modules/core/custom/custom_button.dart';
+import 'package:muvver_app/modules/core/custom/custom_button_with_image.dart';
 import 'package:muvver_app/modules/core/styles/color_theme.dart';
-import 'package:muvver_app/modules/home/home_text.dart';
+
+import 'home_text.dart';
 
 class HomeWidget extends StatefulWidget {
   const HomeWidget({Key? key}) : super(key: key);
@@ -110,8 +113,8 @@ class _HomeWidgetState extends State<HomeWidget> {
     return BottomNavigationBar(
       showSelectedLabels: true,
       showUnselectedLabels: true,
-      unselectedItemColor: ColorTheme.PRIMARY,
-      fixedColor: ColorTheme.PRIMARY,
+      unselectedItemColor: ColorTheme.FOURTH,
+      fixedColor: ColorTheme.FOURTH,
       selectedFontSize: 10,
       unselectedFontSize: 10,
       items: const [
@@ -140,7 +143,7 @@ class _HomeWidgetState extends State<HomeWidget> {
   }
 
   Widget _button1() {
-    return CustomButton(
+    return CustomButtonWithImage(
       onPressed: () {},
       title: HomeText.BUTTON_TITLE_1,
       message: HomeText.BUTTON_TEXT_1,
@@ -149,8 +152,10 @@ class _HomeWidgetState extends State<HomeWidget> {
   }
 
   Widget _button2() {
-    return CustomButton(
-      onPressed: () {},
+    return CustomButtonWithImage(
+      onPressed: () {
+        Modular.to.navigate(RouterConst.SELECT_TRANSPORT);
+      },
       title: HomeText.BUTTON_TITLE_2,
       message: HomeText.BUTTON_TEXT_2,
       pathImage: ImageConst.TRUCK_2,
