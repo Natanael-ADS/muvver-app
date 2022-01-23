@@ -30,7 +30,7 @@ class AppModule extends Module {
     return [
       ChildRoute(RouterConst.HOME, child: (c, a) => const HomeWidget()),
       ChildRoute(RouterConst.SELECT_TRANSPORT, child: (c, a) {
-        return SelectTransportWidget();
+        return const SelectTransportWidget();
       }),
     ];
   }
