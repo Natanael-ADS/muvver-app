@@ -154,7 +154,7 @@ class _HomeWidgetState extends State<HomeWidget> {
   Widget _button2() {
     return CustomButtonWithImage(
       onPressed: () {
-        Modular.to.navigate(RouterConst.SELECT_TRANSPORT);
+        Modular.to.navigate(RouteConst.SELECT_TRANSPORT);
       },
       title: HomeText.BUTTON_TITLE_2,
       message: HomeText.BUTTON_TEXT_2,
