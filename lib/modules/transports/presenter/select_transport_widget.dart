@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:muvver_app/modules/core/constant/route_const.dart';
+import 'package:muvver_app/modules/core/custom/custom_appbar.dart';
 import 'package:muvver_app/modules/core/custom/custom_button.dart';
 import 'package:muvver_app/modules/core/custom/custom_radio.dart';
 import 'package:muvver_app/modules/core/styles/color_theme.dart';
@@ -22,45 +23,17 @@ class _SelectTransportWidgetState extends State<SelectTransportWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(151),
-        child: AppBar(
-          systemOverlayStyle: const SystemUiOverlayStyle(
-            statusBarIconBrightness: Brightness.light,
-            statusBarColor: ColorTheme.SECOND,
+      appBar: CustomAppbar(
+        leading: IconButton(
+          onPressed: () => Modular.to.navigate(RouteConst.HOME),
+          icon: const Icon(
+            Icons.close,
+            color: ColorTheme.FOURTH,
           ),
-          backgroundColor: ColorTheme.SECOND,
-          centerTitle: true,
-          title: const Text(
-            SelectTransportText.TITLE,
-            style: TextStyle(
-              color: ColorText.SECOND,
-              fontSize: 16,
-              fontWeight: FontWeight.normal,
-            ),
-          ),
-          flexibleSpace: const Padding(
-            padding: EdgeInsets.only(top: 70),
-            child: Center(
-              child: Text(
-                SelectTransportText.MESSAGE,
-                style: TextStyle(
-                  color: ColorText.SECOND,
-                  fontSize: 16,
-                  fontWeight: FontWeight.normal,
-                ),
-              ),
-            ),
-          ),
-          leading: IconButton(
-            onPressed: () => Modular.to.navigate(RouterConst.HOME),
-            icon: const Icon(
-              Icons.close,
-              color: ColorTheme.FOURTH,
-            ),
-            iconSize: 34,
-          ),
+          iconSize: 24,
         ),
+        title: SelectTransportText.TITLE,
+        message: SelectTransportText.MESSAGE,
       ),
       body: Stack(
         children: [
