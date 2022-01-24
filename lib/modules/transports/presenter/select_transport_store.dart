@@ -1,6 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:muvver_app/modules/core/constant/user_const.dart';
+import 'package:muvver_app/modules/route/domain/usecase/search_city.dart';
 import 'package:muvver_app/modules/transports/domain/unities/transport.dart';
 import 'package:muvver_app/modules/transports/domain/usecase/search_transports.dart';
 import 'package:muvver_app/modules/traveler/domain/unities/traveler.dart';

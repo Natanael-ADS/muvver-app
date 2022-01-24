@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_print
 
+import 'package:flutter/material.dart';
+
 class LogError {
   Object exception;
   StackTrace stackTrace;
@@ -7,12 +9,15 @@ class LogError {
     this.exception,
     this.stackTrace,
   ) {
-    print('''
+    String result = '''
       ------- LOG ERROR ------
       --------- MUVVER -------
       DATE: ${DateTime.now()}
       EXCEPTION: $exception
       STACKTRACE: $stackTrace
-      ''');
+      ''';
+
+    print(result);
+    debugPrint(result);
   }
 }
