@@ -14,6 +14,7 @@ import 'package:muvver_app/modules/traveler/infra/repositories/add_traveler_repo
 import 'core/constant/route_const.dart';
 import 'core/external/data/mock_sqlite.dart';
 import 'home/home_widget.dart';
+import 'route/presenter/midpoint/midpoint_widget.dart';
 import 'transports/presenter/select_transport_widget.dart';
 
 class AppModule extends Module {
@@ -38,6 +39,7 @@ class AppModule extends Module {
   List<ModularRoute> get routes {
     return [
       ChildRoute(RouteConst.HOME, child: (c, a) => const HomeWidget()),
+      ChildRoute(RouteConst.MIDPOINT, child: (c, a) => MidpointWidget()),
       ChildRoute(RouteConst.SELECT_TRANSPORT, child: (c, a) {
         return const SelectTransportWidget();
       }),

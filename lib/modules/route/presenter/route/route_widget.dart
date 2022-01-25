@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:muvver_app/modules/core/constant/route_const.dart';
 import 'package:muvver_app/modules/core/custom/custom_button.dart';
 import 'package:muvver_app/modules/core/custom/custom_textfield.dart';
 import 'package:muvver_app/modules/core/styles/color_theme.dart';
@@ -7,10 +9,10 @@ import 'package:muvver_app/modules/route/presenter/route/route_text.dart';
 
 class RouteWidget extends StatelessWidget {
   RouteWidget({Key? key}) : super(key: key);
-  TextEditingController dateBeginController = TextEditingController();
-  TextEditingController dateEndController = TextEditingController();
-  TextEditingController cityOriginController = TextEditingController();
-  TextEditingController cityDestinController = TextEditingController();
+  final TextEditingController dateBeginController = TextEditingController();
+  final TextEditingController dateEndController = TextEditingController();
+  final TextEditingController cityOriginController = TextEditingController();
+  final TextEditingController cityDestinController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -66,19 +68,30 @@ class RouteWidget extends StatelessWidget {
                 const SizedBox(height: 25),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Icon(Icons.add_circle_outline, color: ColorTheme.SECOND),
-                    SizedBox(width: 10),
-                    Text(
-                      RouteText.ADD_POINT,
-                      style: TextStyle(
-                        color: ColorText.PRIMARY,
-                        fontWeight: FontWeight.bold,
+                  children: [
+                    IconButton(
+                      icon: const Icon(
+                        Icons.add_circle_outline,
+                        color: ColorTheme.SECOND,
+                      ),
+                      onPressed: () {
+                        Modular.to.pushNamed(RouteConst.MIDPOINT);
+                      },
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Modular.to.pushNamed(RouteConst.MIDPOINT);
+                      },
+                      child: const Text(
+                        RouteText.ADD_POINT,
+                        style: TextStyle(
+                          color: ColorText.PRIMARY,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 5),
                 const Center(
                   child: Text(
                     RouteText.CHANCE_MATCH,
@@ -89,7 +102,7 @@ class RouteWidget extends StatelessWidget {
             ),
           ),
         ),
-        CustomButton(title: RouteText.ADVANDER, onPressed: () {}),
+        CustomButton(title: RouteText.ADVANCE, onPressed: () {}),
       ],
     );
   }

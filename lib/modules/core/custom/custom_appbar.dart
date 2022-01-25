@@ -8,8 +8,8 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final String message;
   final double height;
-  List<Widget>? actions;
-  CustomAppbar({
+  final List<Widget>? actions;
+  const CustomAppbar({
     Key? key,
     required this.title,
     required this.message,

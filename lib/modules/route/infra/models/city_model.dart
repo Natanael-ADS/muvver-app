@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:muvver_app/modules/route/domain/unities/city.dart';
 
 class CityModel extends City {

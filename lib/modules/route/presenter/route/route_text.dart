@@ -6,7 +6,7 @@ class RouteText {
   static const DATE_END = "Data de chegada";
   static const CITY_ORIGIN = "Cidade de origem";
   static const CITY_DESITIN = "Cidade de destino";
-  static const ADVANDER = "Avançar";
+  static const ADVANCE = "Avançar";
 
   static const ADD_POINT = "Adicionar ponto intermediário";
   static const CHANCE_MATCH = "E aumenter sua chance de match";

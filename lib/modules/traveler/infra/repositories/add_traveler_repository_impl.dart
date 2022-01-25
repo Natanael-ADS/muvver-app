@@ -1,5 +1,4 @@
 import 'package:muvver_app/modules/core/error/log_error.dart';
-import 'package:muvver_app/modules/transports/infra/models/transport_model.dart';
 import 'package:muvver_app/modules/traveler/domain/repositories/add_traveler_repository.dart';
 import 'package:muvver_app/modules/traveler/domain/unities/traveler.dart';
 import 'package:muvver_app/modules/traveler/infra/datasources/add_travaler_datasource.dart';
