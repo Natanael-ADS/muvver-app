@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:muvver_app/modules/core/constant/route_const.dart';
 import 'package:muvver_app/modules/core/custom/custom_appbar.dart';
 import 'package:muvver_app/modules/core/styles/color_theme.dart';
+import 'package:muvver_app/modules/route/presenter/main/trip_text.dart';
 import 'package:muvver_app/modules/route/presenter/map/map_widget.dart';
 import 'package:muvver_app/modules/route/presenter/route/route_widget.dart';
 
@@ -16,13 +17,16 @@ class TripWidget extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: CustomAppbar(
-          message: "Qual o trajeto da sua viagem?",
-          title: "Viajante",
+          message: TripText.SUBTITLE,
+          title: TripText.TITLE,
           height: 173,
-          tabBar: const TabBar(indicatorColor: ColorText.THIRD, tabs: [
-            Tab(text: "Rotas"),
-            Tab(text: "Mapa"),
-          ]),
+          tabBar: const TabBar(
+            indicatorColor: ColorText.THIRD,
+            tabs: [
+              Tab(text: TripText.TAB_ROUTE),
+              Tab(text: TripText.TAB_MAP),
+            ],
+          ),
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 20),
@@ -31,15 +35,18 @@ class TripWidget extends StatelessWidget {
                   Modular.to.navigate(RouteConst.HOME);
                 },
                 child: const Text(
-                  "Cancelar",
+                  TripText.CANCEL,
                   style: TextStyle(color: ColorText.THIRD, fontSize: 14),
                 ),
               ),
             ),
           ],
         ),
-        body: const TabBarView(
-          children: [RouteWidget(), MapWidget()],
+        body: TabBarView(
+          children: [
+            RouteWidget(),
+            const MapWidget(),
+          ],
         ),
       ),
     );
