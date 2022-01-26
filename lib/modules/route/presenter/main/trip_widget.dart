@@ -6,10 +6,11 @@ import 'package:muvver_app/modules/core/styles/color_theme.dart';
 import 'package:muvver_app/modules/route/presenter/main/trip_text.dart';
 import 'package:muvver_app/modules/route/presenter/map/map_widget.dart';
 import 'package:muvver_app/modules/route/presenter/route/route_widget.dart';
+import 'package:muvver_app/modules/traveler/domain/unities/traveler.dart';
 
 class TripWidget extends StatelessWidget {
-  final int idTraveler;
-  const TripWidget({Key? key, required this.idTraveler}) : super(key: key);
+  final Traveler traveler;
+  const TripWidget({Key? key, required this.traveler}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +45,7 @@ class TripWidget extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            RouteWidget(),
+            RouteWidget(traveler: traveler),
             const MapWidget(),
           ],
         ),

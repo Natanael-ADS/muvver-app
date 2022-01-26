@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -24,7 +26,7 @@ void main() {
     when(http.get(any)).thenAnswer((realInvocation) async {
       return Response(
         requestOptions: RequestOptions(path: ""),
-        data: ResponsePredictionsConst.data,
+        data: jsonDecode(ResponsePredictionsConst.data),
         statusCode: 200,
       );
     });

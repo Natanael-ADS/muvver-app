@@ -14,7 +14,6 @@ class SearchCityImpl implements SearchCity {
   @override
   Future<List<City>> call(String text) async {
     List<City> cities;
-
     try {
       cities = await repository.searchText(text);
     } catch (exception, stackTrace) {

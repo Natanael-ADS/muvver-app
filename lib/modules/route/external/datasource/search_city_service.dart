@@ -25,7 +25,7 @@ class SearchCityService implements SearchCityDatasource {
   }
 
   List<CityModel> _arrayJsonToModels(Response<dynamic> response) {
-    final json = jsonDecode(response.data ?? "");
+    final json = response.data;
 
     String idPlace, nameCity, nameState;
     List<CityModel> models = [];

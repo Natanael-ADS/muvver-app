@@ -1,17 +1,17 @@
 import 'city.dart';
 
-class Route {
+class RouteProduct {
   DateTime departureDate;
   DateTime arrivalDate;
   City originCity;
   City destinationCity;
-  List<City> intermediatePoints;
+  List<City>? intermediatePoints;
 
-  Route({
+  RouteProduct({
     required this.departureDate,
     required this.arrivalDate,
     required this.originCity,
     required this.destinationCity,
-    required this.intermediatePoints,
+    this.intermediatePoints,
   });
 }

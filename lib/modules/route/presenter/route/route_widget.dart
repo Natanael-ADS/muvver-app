@@ -5,16 +5,16 @@ import 'package:muvver_app/modules/core/custom/custom_button.dart';
 import 'package:muvver_app/modules/core/custom/custom_textfield.dart';
 import 'package:muvver_app/modules/core/custom/custom_textfield_autocomplete.dart';
 import 'package:muvver_app/modules/core/styles/color_theme.dart';
-import 'package:muvver_app/modules/core/util/datetime_util.dart';
 import 'package:muvver_app/modules/route/domain/unities/city.dart';
+import 'package:muvver_app/modules/route/presenter/route/route_store.dart';
 import 'package:muvver_app/modules/route/presenter/route/route_text.dart';
+import 'package:muvver_app/modules/traveler/domain/unities/traveler.dart';
 
 class RouteWidget extends StatelessWidget {
-  RouteWidget({Key? key}) : super(key: key);
-  final TextEditingController dateBeginController = TextEditingController();
-  final TextEditingController dateEndController = TextEditingController();
-  final TextEditingController cityOriginController = TextEditingController();
-  final TextEditingController cityDestinController = TextEditingController();
+  final Traveler traveler;
+  final RouteStore store = RouteStore();
+
+  RouteWidget({Key? key, required this.traveler}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,22 +38,24 @@ class RouteWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CustomTextField(
-                      controller: dateBeginController,
+                      controller: store.dateBeginController,
                       label: RouteText.DATE_BEGIN,
                       widthPercent: 43,
-                      onTap: () => _setDate(context, dateBeginController),
+                      onTap: () =>
+                          store.setDate(context, store.dateBeginController),
                     ),
                     CustomTextField(
-                      controller: dateEndController,
+                      controller: store.dateEndController,
                       label: RouteText.DATE_END,
                       widthPercent: 43,
-                      onTap: () => _setDate(context, dateEndController),
+                      onTap: () =>
+                          store.setDate(context, store.dateEndController),
                     ),
                   ],
                 ),
                 const SizedBox(height: 25),
                 CustomTextFieldAutoComplete<City>(
-                  controller: cityOriginController,
+                  controller: store.cityOriginController,
                   label: RouteText.CITY_ORIGIN,
                   prefixIcon: const Icon(
                     Icons.search,
@@ -70,18 +72,14 @@ class RouteWidget extends StatelessWidget {
                     );
                   },
                   onSuggestionSelected: (city) {
-                    cityOriginController.text = city.cityAndState();
+                    store.cityOrigin = city;
+                    store.cityOriginController.text = city.cityAndState();
                   },
-                  suggestionsCallback: (text) {
-                    return [
-                      City(id: "1", name: "teste", stateAbbreviation: "TT"),
-                      City(id: "2", name: "outro", stateAbbreviation: "OO")
-                    ];
-                  },
+                  suggestionsCallback: store.setCities,
                 ),
                 const SizedBox(height: 25),
                 CustomTextFieldAutoComplete<City>(
-                  controller: cityDestinController,
+                  controller: store.cityDestinController,
                   label: RouteText.CITY_DESITIN,
                   prefixIcon: const Icon(
                     Icons.search,
@@ -98,14 +96,10 @@ class RouteWidget extends StatelessWidget {
                     );
                   },
                   onSuggestionSelected: (city) {
-                    cityOriginController.text = city.cityAndState();
+                    store.cityDestin = city;
+                    store.cityDestinController.text = city.cityAndState();
                   },
-                  suggestionsCallback: (text) {
-                    return [
-                      City(id: "1", name: "teste", stateAbbreviation: "TT"),
-                      City(id: "2", name: "outro", stateAbbreviation: "OO")
-                    ];
-                  },
+                  suggestionsCallback: store.setCities,
                 ),
                 const SizedBox(height: 25),
                 Row(
@@ -144,18 +138,13 @@ class RouteWidget extends StatelessWidget {
             ),
           ),
         ),
-        CustomButton(title: RouteText.ADVANCE, onPressed: () {}),
+        CustomButton(
+          title: RouteText.ADVANCE,
+          onPressed: () {
+            store.nextWidget(traveler);
+          },
+        ),
       ],
     );
-  }
-
-  _setDate(BuildContext context, TextEditingController controller) async {
-    var date = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2010),
-      lastDate: DateTime(2999),
-    );
-    controller.text = DatetimeUtil.getStringFromDate(date);
   }
 }

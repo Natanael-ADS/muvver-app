@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -43,7 +45,7 @@ void main() {
     when(dioMock.get(any)).thenAnswer((realInvocation) async {
       return Response(
         requestOptions: RequestOptions(path: ""),
-        data: ResponsePredictionsConst.data,
+        data: jsonDecode(ResponsePredictionsConst.data),
         statusCode: 200,
       );
     });

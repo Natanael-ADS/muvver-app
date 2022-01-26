@@ -3,7 +3,7 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:muvver_app/modules/core/styles/color_theme.dart';
 
 class CustomTextFieldAutoComplete<T> extends StatelessWidget {
-  final List<T> Function(String) suggestionsCallback;
+  final Future<List<T>> Function(String) suggestionsCallback;
   final Widget Function(BuildContext, T) itemBuilder;
   final void Function(T) onSuggestionSelected;
   final Widget? prefixIcon;

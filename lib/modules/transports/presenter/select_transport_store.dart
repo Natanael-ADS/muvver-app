@@ -5,7 +5,6 @@ import 'package:muvver_app/modules/core/constant/user_const.dart';
 import 'package:muvver_app/modules/transports/domain/unities/transport.dart';
 import 'package:muvver_app/modules/transports/domain/usecase/search_transports.dart';
 import 'package:muvver_app/modules/traveler/domain/unities/traveler.dart';
-import 'package:muvver_app/modules/traveler/domain/usecases/add_traveler.dart';
 part 'select_transport_store.g.dart';
 
 class SelectTransportStore = _SelectTransportStoreBase
@@ -13,7 +12,6 @@ class SelectTransportStore = _SelectTransportStoreBase
 
 abstract class _SelectTransportStoreBase with Store {
   final search = Modular.get<SearchTransportsImpl>();
-  final add = Modular.get<AddTravelerImpl>();
 
   List<Transport> transports = [];
 
@@ -27,8 +25,7 @@ abstract class _SelectTransportStoreBase with Store {
 
   void addTraveler() {
     final traveler = Traveler(idUser: UserConst.id, idTransport: valueRadio);
-    add(traveler);
 
-    Modular.to.pushNamed(RouteConst.TRIP + "/1");
+    Modular.to.pushNamed(RouteConst.TRIP, arguments: traveler);
   }
 }

@@ -43,8 +43,8 @@ class AppModule extends Module {
       ChildRoute(RouteConst.SELECT_TRANSPORT, child: (c, a) {
         return const SelectTransportWidget();
       }),
-      ChildRoute(RouteConst.TRIP + "/:id", child: (c, a) {
-        return TripWidget(idTraveler: int.parse(a.params['id'].toString()));
+      ChildRoute(RouteConst.TRIP, child: (c, a) {
+        return TripWidget(traveler: a.data);
       }),
     ];
   }
