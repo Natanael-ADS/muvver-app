@@ -3,8 +3,10 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:muvver_app/modules/core/constant/route_const.dart';
 import 'package:muvver_app/modules/core/custom/custom_button.dart';
 import 'package:muvver_app/modules/core/custom/custom_textfield.dart';
+import 'package:muvver_app/modules/core/custom/custom_textfield_autocomplete.dart';
 import 'package:muvver_app/modules/core/styles/color_theme.dart';
 import 'package:muvver_app/modules/core/util/datetime_util.dart';
+import 'package:muvver_app/modules/route/domain/unities/city.dart';
 import 'package:muvver_app/modules/route/presenter/route/route_text.dart';
 
 class RouteWidget extends StatelessWidget {
@@ -50,20 +52,60 @@ class RouteWidget extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 25),
-                CustomTextField(
+                CustomTextFieldAutoComplete<City>(
                   controller: cityOriginController,
                   label: RouteText.CITY_ORIGIN,
-                  widthPercent: 100,
-                  prefixIcon:
-                      const Icon(Icons.search, color: ColorTheme.SECOND),
+                  prefixIcon: const Icon(
+                    Icons.search,
+                    color: ColorTheme.SECOND,
+                  ),
+                  itemBuilder: (_, city) {
+                    return Container(
+                      alignment: Alignment.centerLeft,
+                      height: 40,
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Text(city.cityAndState()),
+                      ),
+                    );
+                  },
+                  onSuggestionSelected: (city) {
+                    cityOriginController.text = city.cityAndState();
+                  },
+                  suggestionsCallback: (text) {
+                    return [
+                      City(id: "1", name: "teste", stateAbbreviation: "TT"),
+                      City(id: "2", name: "outro", stateAbbreviation: "OO")
+                    ];
+                  },
                 ),
                 const SizedBox(height: 25),
-                CustomTextField(
+                CustomTextFieldAutoComplete<City>(
                   controller: cityDestinController,
                   label: RouteText.CITY_DESITIN,
-                  widthPercent: 100,
-                  prefixIcon:
-                      const Icon(Icons.search, color: ColorTheme.SECOND),
+                  prefixIcon: const Icon(
+                    Icons.search,
+                    color: ColorTheme.SECOND,
+                  ),
+                  itemBuilder: (_, city) {
+                    return Container(
+                      alignment: Alignment.centerLeft,
+                      height: 40,
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Text(city.cityAndState()),
+                      ),
+                    );
+                  },
+                  onSuggestionSelected: (city) {
+                    cityOriginController.text = city.cityAndState();
+                  },
+                  suggestionsCallback: (text) {
+                    return [
+                      City(id: "1", name: "teste", stateAbbreviation: "TT"),
+                      City(id: "2", name: "outro", stateAbbreviation: "OO")
+                    ];
+                  },
                 ),
                 const SizedBox(height: 25),
                 Row(

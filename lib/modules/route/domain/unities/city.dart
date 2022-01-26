@@ -12,4 +12,6 @@ class City {
     this.latitude = 0,
     this.longitude = 0,
   });
+
+  String cityAndState() => name + " - " + stateAbbreviation;
 }
